@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#000000">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Pushed Through</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Permanent+Marker&display=swap">
+<style>
+:root{--bg:#000;--sf:#070707;--sf2:#151515;--ln:#3b3b3b;--tx:#f2f2f2;--mu:#8c8c8c;--hero:#ff2a2a;--bl:#f2f2f2;--or:#ff9a1f;--rd:#ff4545;--gr:#33e07a;--navh:64px;--ease:cubic-bezier(.32,.72,0,1);color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 "Chakra Petch",system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100dvh}
+button{font:inherit;color:inherit;cursor:pointer;transition:transform .25s var(--ease),background .25s,opacity .2s,color .2s}
+button:active{transform:scale(.96);opacity:.8}
+button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--bl);outline-offset:2px}
+svg{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:miter}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;background:rgba(0,0,0,.88);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border-top:.5px solid var(--ln);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+nav svg{width:26px;height:26px}
+nav button.on{color:var(--bl)}
+.brand{display:none}
+main{padding:12px 20px calc(var(--navh) + 40px);max-width:760px;margin:0 auto}
+@media(min-width:900px){
+:root{--navh:0px}
+nav{top:0;right:auto;bottom:0;width:240px;flex-direction:column;gap:2px;padding:calc(28px + env(safe-area-inset-top,0px)) 12px 24px;border-top:0;border-right:.5px solid var(--ln)}
+nav button{flex:none;flex-direction:row;gap:12px;font-size:13px;padding:10px 12px;border:1px solid transparent}
+nav button.on{background:rgba(255,255,255,.07);border-color:var(--ln)}
+nav svg{width:22px;height:22px}
+.brand{display:block;font-weight:700;font-size:20px;padding:0 12px 18px}
+main{margin-left:240px;max-width:none;padding:36px 56px 56px}
+main>#v{max-width:820px;margin:0 auto}}
+h2{font-size:26px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:8px 0 18px}
+h3{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin:26px 0 8px 2px}
+.grp{background:var(--sf);border:1px solid var(--ln);padding:0 16px}
+.in{animation:vin .45s var(--ease)}
+@keyframes vin{from{opacity:0;transform:translateY(12px)}}
+.home{display:flex;flex-direction:column;min-height:calc(100dvh - var(--navh) - 64px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}
+.home .t{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mu)}
+.home .t:before{content:"[ "}.home .t:after{content:" ]"}
+.hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0}
+.num{position:relative;display:inline-block;color:var(--hero);font-family:"Permanent Marker","Segoe Print",cursive;font-weight:400;line-height:.9;white-space:nowrap;text-shadow:0 0 48px rgba(255,42,42,.28)}
+.num #n span{display:inline-block;width:.62em;text-align:center}
+.num small{position:absolute;left:100%;bottom:calc(var(--fs,100px)*.08);margin-left:6px;font:500 13px "Chakra Petch",system-ui,sans-serif;color:var(--mu);line-height:1;text-shadow:none}
+.pop{animation:pop .55s var(--ease)}
+@keyframes pop{40%{transform:scale(1.06)}}
+.pl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mu);margin-top:8px;text-align:center}
+.seg{position:relative;display:grid;grid-template-columns:repeat(var(--n,4),1fr);background:var(--sf);border:1px solid var(--ln);padding:2px;max-width:380px;margin:8px auto 26px}
+.seg i{position:absolute;top:2px;bottom:2px;left:2px;width:calc((100% - 4px)/var(--n,4));background:#1f1f1f;border:1px solid var(--tx);transform:translateX(calc(var(--i,0)*100%));transition:transform .4s var(--ease)}
+.seg button{position:relative;border:0;background:none;padding:8px 2px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
+.seg button.on{color:var(--tx)}
+.subs{display:flex;justify-content:space-around;margin-bottom:26px}
+.subs div{text-align:center;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+.subs b{display:block;font:400 36px/1.1 "Permanent Marker","Segoe Print",cursive;letter-spacing:0;color:var(--c)}
+.adds{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.add{display:flex;align-items:center;justify-content:center;min-height:92px;border:1px solid var(--c);background-color:color-mix(in srgb,var(--c) 10%,var(--sf));color:var(--c);font-weight:600;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+
+.hint{margin:16px 0 0;text-align:center;font-size:13px;color:var(--mu)}
+.hint button{border:0;background:none;color:var(--bl);font-weight:500;padding:0}
+.R{--c:var(--or)}.F{--c:var(--rd)}.S{--c:var(--gr)}
+.e{padding:14px 0;border-bottom:.5px solid var(--ln)}
+.e:last-child{border:0}
+.e .m{display:flex;gap:10px;align-items:center;font-size:12px;color:var(--mu);margin-bottom:6px}
+.tag{color:var(--c);border:1px solid var(--c);font-weight:600;padding:1px 8px;letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+.e p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.e .cn{margin-top:8px;padding-left:12px;border-left:3px solid var(--gr);color:var(--mu)}
+.act{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--ln);background:var(--sf2);padding:10px 16px;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;min-height:44px;display:inline-flex;align-items:center}
+.btn.c{background:color-mix(in srgb,var(--c) 12%,var(--sf2));color:var(--c);border-color:var(--c)}
+.btn.p{background:var(--tx);border-color:var(--tx);color:#000}
+.lnk{border:1px solid var(--ln);background:var(--sf2);color:var(--tx);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;min-height:38px}
+.lnk[data-del]{color:var(--rd);border-color:color-mix(in srgb,var(--rd) 55%,var(--ln));background:color-mix(in srgb,var(--rd) 10%,var(--sf2))}
+.empty{color:var(--mu);padding:24px 0}
+.flt input{font:inherit;color:var(--tx);background:var(--sf);border:1px solid var(--ln);border-radius:0;padding:10px 12px;min-height:44px;color-scheme:dark}
+#nq{width:100%}
+.dts{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--mu)}
+.dts label{display:flex;flex-direction:column;gap:4px}
+.cntl{font-size:13px;color:var(--mu);margin:14px 0 0 16px}
+.ov{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center;animation:fade .3s both}
+.sheet{background:var(--sf);border:1px solid var(--ln);width:100%;max-width:520px;padding:12px 20px calc(22px + env(safe-area-inset-bottom,0px));animation:up .5s var(--ease) both}
+.sheet:before{content:"";display:block;width:36px;height:5px;border-radius:3px;background:var(--ln);margin:0 auto 16px}
+.ov.x{animation:fadeo .22s both}.ov.x .sheet{animation:dn .22s ease-in both}
+@keyframes fade{from{opacity:0}}@keyframes fadeo{to{opacity:0}}@keyframes up{from{transform:translateY(100%)}}@keyframes dn{to{transform:translateY(100%)}}
+@media(min-width:600px){.ov{align-items:center}}
+.sheet h4{margin:0 0 4px;font-size:18px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.sheet .sub{margin:0 0 14px;color:var(--mu);font-size:14px}
+textarea{width:100%;min-height:96px;border:1px solid var(--ln);border-radius:0;background:var(--sf2);color:var(--tx);font:inherit;padding:12px;resize:vertical}
+.err{color:var(--rd);font-size:13px;min-height:20px;margin:6px 0}
+#wb{position:fixed;inset:0;z-index:50;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;animation:out .5s ease 1.3s forwards}
+#wb i{width:72px;height:72px;border:3px solid var(--hero);animation:ring 1.2s var(--ease) both}
+#wb span{font-weight:700;font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:var(--hero);animation:rise .8s var(--ease) .2s both}
+@keyframes ring{from{transform:scale(.3);opacity:0}60%{opacity:1}to{transform:scale(1)}}
+@keyframes rise{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+@keyframes out{to{opacity:0;visibility:hidden}}
+.act:empty{display:none}.tl{margin-top:8px;gap:8px}
+#tt{position:fixed;left:0;right:0;margin:0 auto;width:max-content;max-width:calc(100% - 32px);bottom:calc(var(--navh) + 20px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--sf2);border:1px solid var(--tx);padding:10px 16px;display:flex;gap:16px;align-items:center;font-size:13px;letter-spacing:.06em;animation:rise .4s var(--ease) both}
+#tt button{border:0;background:none;color:var(--tx);font-weight:700;text-decoration:underline;padding:0;letter-spacing:.08em;text-transform:uppercase}
+#ms{position:fixed;inset:0;z-index:40;pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(0,0,0,.72);animation:fade .4s both,fadeo .5s ease 1.4s forwards}
+#ms i{width:90px;height:90px;border:3px solid var(--hero);animation:ring 1s var(--ease) both}
+#ms b{font:400 64px "Permanent Marker",cursive;color:var(--hero);animation:rise .7s var(--ease) .15s both}
+#ms span{letter-spacing:.2em;text-transform:uppercase;color:var(--mu);font-size:13px}
+.danger{margin-top:48px;border:1px solid var(--rd);padding:16px}
+.danger h3{margin:0 0 8px;color:var(--rd)}
+.hold{position:relative;overflow:hidden;--p:0;touch-action:none;user-select:none;-webkit-user-select:none}
+.hold:before{content:"";position:absolute;inset:0;background:var(--rd);opacity:.45;transform:scaleX(var(--p));transform-origin:left}
+.hold span{position:relative}
+.cookie{font-size:15px}
+#wb b{font:400 56px "Permanent Marker","Segoe Print",cursive;color:var(--tx);margin-top:-4px;animation:rise .8s var(--ease) .45s both}
+h2:before{content:"[ "}h2:after{content:" ]"}
+.grp,.sheet,.add{--k:var(--tx);background-image:linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k));background-repeat:no-repeat;background-size:10px 2px,2px 10px,10px 2px,2px 10px,10px 2px,2px 10px,10px 2px,2px 10px;background-position:0 0,0 0,100% 0,100% 0,0 100%,0 100%,100% 100%,100% 100%}
+.add{--k:var(--c)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}#wb{display:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav"></nav>
+<main><div id="v"></div></main>
+<div id="md"></div>
+<script>
+const $=s=>document.querySelector(s),K='pt.v1';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let S={entries:[],lastBackup:0,hideBk:0,name:'Om'};
+try{const r=localStorage.getItem(K);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+const ms=n=>n===10||n===50||(n>=100&&n%100===0);
+function tick(){const t=pushed().length;if(t>(S.lt||0)&&ms(t))celebrate(t);S.lt=t}
+const save=()=>{tick();try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const ic=p=>`<svg viewBox="0 0 24 24">${p}</svg>`;
+const T={resistance:['R','Resistance'],failure:['F','Failure'],restart:['S','Restart']};
+const scr0=[['home','Home','<path d="M3 11l9-8 9 8M5 10v11h14V10"/>'],['notes','Notes','<path d="M5 3h14v18H5zM9 8h6M9 12h6M9 16h4"/>'],['jar','Jar','<path d="M8 3h8v3H8zM6 6h12v15H6zM6 11h12"/>'],['history','History','<path d="M3 3h18v18H3zM12 7v5l4 2"/>'],['data','Data','<path d="M4 5h16v5H4zM4 14h16v5H4z"/>'],['settings','Settings','<path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4h4v6h-4zM6 14h4v6H6z"/>']];
+let scr='home',per='total',nt='failure',nq='',nf='',nto='',shown=0,msg='';
+const PL={total:'all time',today:'today',weekly:'this week',monthly:'this month'};
+function from(p){const d=new Date();d.setHours(0,0,0,0);if(p==='today')return+d;if(p==='weekly'){d.setDate(d.getDate()-((d.getDay()+6)%7));return+d}if(p==='monthly'){d.setDate(1);return+d}return 0}
+const fmt=t=>new Date(t).toLocaleString([],{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'});
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const ofT=t=>S.entries.filter(e=>e.type===t);
+const pushed=()=>S.entries.filter(e=>e.type==='restart'||(e.type==='resistance'&&e.status==='through')).map(e=>e.type==='restart'?e.ts:e.doneTs||e.ts);
+const cnt=(a,p)=>a.filter(t=>t>=from(p)).length;
+const sub=t=>cnt(ofT(t).map(e=>e.ts),per);
+const inJar=e=>e.jar||(e.type==='resistance'&&e.status==='through');
+const byNew=a=>a.slice().sort((x,y)=>y.ts-x.ts);
+const dg=v=>String(v).split('').map(c=>`<span>${c}</span>`).join('');
+const tag=e=>`<span class="tag ${T[e.type][0]}">${T[e.type][1]}</span>`;
+const age=e=>{const d=Math.floor((Date.now()-e.ts)/864e5);return d<1?'open today':`open for ${d} day${d>1?'s':''}`};
+function celebrate(n){const d=document.createElement('div');d.id='ms';d.innerHTML=`<i></i><b>${n}</b><span>pushed through</span>`;document.body.appendChild(d);setTimeout(()=>d.remove(),2000)}
+function pop(html,c=''){const m=$('#md');m.innerHTML=`<div class="ov"><div class="sheet ${c}">${html}</div></div>`;const ov=m.firstChild,close=()=>{ov.classList.add('x');setTimeout(()=>{if(m.firstChild===ov)m.innerHTML=''},230)};ov.onclick=e=>{if(e.target===ov)close()};return{ov,close,q:s=>ov.querySelector(s)}}
+function toast(t,undo){clearTimeout(toast.t);const o=$('#tt');if(o)o.remove();const d=document.createElement('div');d.id='tt';d.innerHTML=`<span>${t}</span><button>Undo</button>`;document.body.appendChild(d);d.querySelector('button').onclick=()=>{undo();d.remove()};toast.t=setTimeout(()=>d.remove(),5000)}
+function del(id,both){const snap=JSON.stringify(S.entries);S.entries=S.entries.filter(x=>x.id!==id&&!(both&&x.fromFailure===id));save();render();toast('Deleted',()=>{S.entries=JSON.parse(snap);save();render()})}
+function askDel(id){const e=S.entries.find(x=>x.id===id);
+ if(e.type==='failure'&&S.entries.some(x=>x.fromFailure===id)){
+  const p=pop(`<h4 style="color:var(--rd)">Delete failure</h4><p class="sub">Closing it created a restart that counts toward Pushed Through. Remove that too?</p><div class="act"><button class="btn c" style="--c:var(--rd)" id="d1">Delete both</button><button class="btn" id="d2">Keep the restart</button><button class="btn" id="d3">Cancel</button></div>`);
+  p.q('#d1').onclick=()=>{p.close();del(id,true)};p.q('#d2').onclick=()=>{p.close();del(id,false)};p.q('#d3').onclick=p.close;
+ }else del(id,false)}
+function reopen(id){const snap=JSON.stringify(S.entries),e=S.entries.find(x=>x.id===id);e.status='open';delete e.closeNote;delete e.closeType;delete e.closedTs;S.entries=S.entries.filter(x=>x.fromFailure!==id);save();render();toast('Failure reopened',()=>{S.entries=JSON.parse(snap);save();render()})}
+function edit(id){const e=S.entries.find(x=>x.id===id),cl=e.closeNote!==undefined,dt=new Date(e.ts-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16);
+ const p=pop(`<h4>Edit ${T[e.type][1]}</h4><p class="sub">Change the note or when it happened.</p><textarea id="e1" maxlength="1000">${esc(e.note)}</textarea>${cl?`<p class="sub" style="margin:12px 0 6px">Closing note</p><textarea id="e2" maxlength="1000">${esc(e.closeNote)}</textarea>`:''}<p class="sub" style="margin:12px 0 6px">When</p><div class="flt"><input id="e3" type="datetime-local" value="${dt}"></div><div class="err" id="er"></div><div class="act" style="margin-top:0"><button class="btn p" id="ok">Save</button><button class="btn" id="no">Cancel</button></div>`,T[e.type][0]);
+ p.q('#no').onclick=p.close;
+ p.q('#ok').onclick=()=>{const a=p.q('#e1').value.trim(),b=cl?p.q('#e2').value.trim():'x',t=+new Date(p.q('#e3').value);if(!a||!b){p.q('#er').textContent='Notes cannot be empty.';return}e.note=a;if(!isNaN(t))e.ts=t;if(cl){e.closeNote=b;S.entries.forEach(x=>{if(x.fromFailure===id)x.note=b})}p.close();save();render()}}
+function cookie(){const l=S.entries.filter(inJar);if(!l.length)return;const p=pop(''),s=p.ov.firstChild;
+ const show=()=>{const e=l[Math.floor(Math.random()*l.length)];s.innerHTML=`<h4 style="color:var(--tx)">From your jar</h4>${card(e,'',1)}<div class="act"><button class="btn p" id="c1">Another</button><button class="btn" id="c2">Close</button></div>`;s.querySelector('#c1').onclick=show;s.querySelector('#c2').onclick=p.close};show()}
+function wipe(){const n=S.entries.length;
+ if(!n){msg='Nothing to delete.';render();return}
+ let p=pop(`<h4 style="color:var(--rd)">Delete everything?</h4><p class="sub">This removes all ${n} entries, including your cookie jar. There is no undo.</p><div class="act"><button class="btn" id="w0">Export first</button><button class="btn c" style="--c:var(--rd)" id="w1">Continue</button><button class="btn" id="wx">Cancel</button></div>`);
+ p.q('#wx').onclick=p.close;p.q('#w0').onclick=exportFile;p.q('#w1').onclick=()=>{p.close();setTimeout(step2,260)};
+ function step2(){p=pop(`<h4 style="color:var(--rd)">Really sure?</h4><p class="sub">Type <b>${n}</b> to confirm.</p><div class="flt"><input id="w2" inputmode="numeric" autocomplete="off" style="width:100%"></div><div class="act"><button class="btn c" style="--c:var(--rd)" id="w3" disabled>Continue</button><button class="btn" id="wx">Cancel</button></div>`);
+  const i=p.q('#w2'),b=p.q('#w3');i.focus();i.oninput=()=>{b.disabled=i.value.trim()!==String(n)};p.q('#wx').onclick=p.close;b.onclick=()=>{p.close();setTimeout(step3,260)}}
+ function step3(){p=pop(`<h4 style="color:var(--rd)">Last chance</h4><p class="sub">Press and hold for 3 seconds. Letting go cancels.</p><div class="act"><button class="btn c hold" style="--c:var(--rd)" id="w4"><span>Hold to delete</span></button><button class="btn" id="wx">Cancel</button></div>`);
+  const h=p.q('#w4');let t0=0,raf=0;
+  const run=now=>{const k=Math.min(1,(now-t0)/3000);h.style.setProperty('--p',k);if(k>=1){p.close();S.entries=[];S.lastBackup=0;save();msg='Everything deleted.';render(true);return}raf=requestAnimationFrame(run)};
+  const up=()=>{cancelAnimationFrame(raf);h.style.setProperty('--p',0)};
+  h.onpointerdown=e=>{e.preventDefault();t0=performance.now();raf=requestAnimationFrame(run)};h.oncontextmenu=e=>e.preventDefault();
+  ['pointerup','pointerleave','pointercancel'].forEach(ev=>h.addEventListener(ev,up));p.q('#wx').onclick=p.close}}
+function card(e,x='',nt0){return `<div class="e ${T[e.type][0]}"><div class="m">${tag(e)}<span>${fmt(e.ts)}</span>${e.type==='failure'&&e.status==='open'?`<span>${age(e)}</span>`:''}</div><p>${esc(e.note)}</p>${e.closeNote?`<p class="cn"><b>${e.closeType==='fixed'?'Fixed':'Moved on'}:</b> ${esc(e.closeNote)}</p>`:''}${e.type==='resistance'&&e.status==='through'?'<p class="cn">Went through</p>':''}${e.type==='resistance'&&e.status==='no'?'<p class="cn" style="border-color:var(--ln)">Did not go through</p>':''}${x}${nt0?'':`<div class="act tl">${jl(e)}<button class="lnk" data-edit="${e.id}">Edit</button><button class="lnk" data-del="${e.id}">Delete</button>${e.type==='failure'&&e.status==='closed'?`<button class="lnk" data-reopen="${e.id}">Reopen</button>`:''}</div>`}</div>`}
+const jl=e=>(e.type==='resistance'&&e.status==='through')?'':`<button class="lnk" data-jar="${e.id}">${e.jar?'Remove from jar':'Add to cookie jar'}</button>`;const jb=()=>'';
+const sec=(h,l,f)=>l.length?(h?`<h3>${h}</h3>`:'')+`<div class="grp">${l.map(f).join('')}</div>`:'';
+const gb=(c,id,k,l)=>`<button class="btn c" style="--c:var(--${c})" data-${k}="${id}">${l}</button>`;
+
+function noteList(){
+ const a=nf?+new Date(nf+'T00:00:00'):0,b=nto?+new Date(nto+'T23:59:59'):Infinity,q=nq.trim().toLowerCase();
+ const all=byNew(ofT(nt)).filter(e=>e.ts>=a&&e.ts<=b&&(!q||(e.note+' '+(e.closeNote||'')).toLowerCase().includes(q)));
+ const op=all.filter(e=>e.status==='open'),dn=all.filter(e=>e.status!=='open');
+ let h=`<p class="cntl">${all.length} ${all.length===1?'note':'notes'}</p>`;
+ if(nt==='failure')h+=sec('Open',op,e=>card(e,`<div class="act">${gb('gr',e.id+'|fixed','close','Fixed')}${gb('gr',e.id+'|moved','close','Moved on')}${jb(e)}</div>`))+sec('Closed',dn,e=>card(e,`<div class="act">${jb(e)}</div>`));
+ else if(nt==='resistance')h+=sec('Waiting on an outcome',op,e=>card(e,`<div class="act">${gb('gr',e.id+'|through','res','Went through')}<button class="btn" data-res="${e.id}|no">Didn't</button>${jb(e)}</div>`))+sec('Done',dn,e=>card(e,e.status==='through'?'':`<div class="act">${jb(e)}</div>`));
+ else h+=sec('',all,e=>card(e,`<div class="act">${jb(e)}</div>`));
+ return h+(all.length?'':'<div class="empty">Nothing here.</div>')}
+
+const views={
+settings(){return `<h2>Settings</h2><h3>Your name</h3><div class="flt"><input id="sn" type="text" maxlength="30" value="${esc(S.name||'')}" placeholder="What should I call you?" style="width:100%"></div><div class="act"><button class="btn p" data-sn="1">Save name</button></div><p id="sm" style="color:var(--mu);font-size:14px">Shown in the welcome animation every time you open the app.</p>`},
+home(){
+ const open=ofT('resistance').filter(e=>e.status==='open').length;
+ const wk=S.entries.length&&Date.now()-S.lastBackup>6048e5&&Date.now()-S.hideBk>864e5;
+ const P=['total','today','weekly','monthly'];
+ return `<section class="home"><div class="t">Pushed Through</div>
+ <div class="hero"><div class="num"><span id="n">${dg(shown)}</span><small>times</small></div><div class="pl" id="pl">${PL[per]}</div></div>
+ <div class="seg" style="--n:4;--i:${P.indexOf(per)}"><i></i>${P.map(p=>`<button class="${p===per?'on':''}" data-per="${p}">${p[0].toUpperCase()+p.slice(1)}</button>`).join('')}</div>
+ <div class="subs">${[['resistance','Resistance','R'],['failure','Failures','F'],['restart','Restarts','S']].map(([t,l,c])=>`<div class="${c}"><b id="s-${t}">${sub(t)}</b>${l}</div>`).join('')}</div>
+ <div class="adds">${[['resistance','Resistance','R','<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'],['failure','Failure','F','<circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/>'],['restart','Restart','S','<path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/>']].map(([t,l,c,p])=>`<button class="add ${c}" data-add="${t}">${l}</button>`).join('')}</div>
+ <p class="hint">${open?`<button data-go="notes" data-tab="resistance">${open} resistance waiting on an outcome</button>`:''}${open&&wk?' · ':''}${wk?`Backup is over a week old. <button data-go="data">Back up</button> · <button data-hbk="1">dismiss</button>`:''}</p></section>`},
+notes(){
+ const N=['failure','restart','resistance'],L=['Failures','Restarts','Resistance'];
+ return `<h2>Notes</h2><div class="seg" style="--n:3;--i:${N.indexOf(nt)};max-width:none;margin:0 0 14px"><i></i>${N.map((t,i)=>`<button class="${t===nt?'on':''}" data-nt="${t}">${L[i]}</button>`).join('')}</div>
+ <div class="flt"><input id="nq" type="search" placeholder="Search notes" value="${esc(nq)}"><div class="dts"><label>From<input id="nf" type="date" value="${nf}"></label><label>To<input id="nto" type="date" value="${nto}"></label><button class="btn" data-clr="1">Clear</button></div></div>
+ <div id="nl">${noteList()}</div>`},
+jar(){
+ const l=byNew(S.entries.filter(inJar));
+ return `<h2>Cookie jar</h2><p style="color:var(--mu);margin:-8px 0 16px">Proof of what it took to get here.</p>${l.length?'<div class="act" style="margin:0 0 16px"><button class="btn p" data-cookie="1">Pull a cookie</button></div>':''}${l.length?`<div class="grp">${l.map(e=>card(e,e.jar?`<div class="act">${jb(e)}</div>`:'')).join('')}</div>`:'<div class="empty">Empty for now. Resistance you go through lands here on its own. Flag any note to add it.</div>'}`},
+history(){
+ const l=byNew(S.entries);
+ return `<h2>History</h2>${l.length?`<div class="grp">${l.map(e=>card(e,inJar(e)&&!e.jar?'':`<div class="act">${jb(e)}</div>`)).join('')}</div>`:'<div class="empty">Nothing logged yet.</div>'}`},
+data(){
+ return `<h2>Data</h2>
+ <p style="color:var(--mu)">Saved in this browser only. Export a file to back up or move to another device.</p>
+ <div class="act"><button class="btn p" data-x="exp">Export file</button><label class="btn" tabindex="0">Import file<input id="imp" type="file" accept=".json,application/json" hidden></label><button class="btn" data-x="txt" data-d="7">Copy text: 7 days</button><button class="btn" data-x="txt" data-d="30">30 days</button><button class="btn" data-x="txt" data-d="0">All</button></div>
+ <p style="color:var(--mu);font-size:14px">${S.lastBackup?'Last export: '+fmt(S.lastBackup):'No export yet.'}</p>
+ <p style="color:var(--bl);font-weight:600">${esc(msg)}</p><textarea id="cp" hidden readonly></textarea><div class="danger"><h3>Danger zone</h3><p style="color:var(--mu);margin:0 0 12px">Wipes every entry from this browser. Export first, there is no way back.</p><button class="btn c" style="--c:var(--rd)" data-wipe="1">Delete everything</button></div>`}
+};
+
+function render(anim){
+ $('#nav').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.go===scr));
+ const v=$('#v');v.innerHTML=views[scr]();
+ if(anim){v.classList.remove('in');void v.offsetWidth;v.classList.add('in')}
+ if(scr==='home')setNum();
+ const f=$('#imp');if(f)f.onchange=imp;
+ if(scr==='notes')['nq','nf','nto'].forEach(id=>{$('#'+id).oninput=()=>{nq=$('#nq').value;nf=$('#nf').value;nto=$('#nto').value;$('#nl').innerHTML=noteList()}});
+}
+function fit(){const n=$('#n');if(!n)return;const d=String(n.textContent).length||1,nav=innerWidth>=900?0:64,room=innerHeight-nav-380;
+ const s=Math.max(72,Math.min(innerHeight*.5,(room-40)/.9,(innerWidth-(innerWidth>=900?240:90))/(d*.62)));
+ n.parentNode.style.fontSize=s+'px';n.parentNode.style.setProperty('--fs',s+'px')}
+function setNum(){
+ const n=$('#n'),to=cnt(pushed(),per);
+ if(to>shown&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  const a=shown,t0=performance.now(),u=$('.num');u.classList.remove('pop');void u.offsetWidth;u.classList.add('pop');
+  (function s(t){const k=Math.min(1,(t-t0)/650);shown=Math.round(a+(to-a)*(1-Math.pow(1-k,3)));const el=$('#n');if(!el)return;el.innerHTML=dg(shown);fit();if(k<1)requestAnimationFrame(s)})(t0);
+ }else{shown=to;n.innerHTML=dg(to)}
+ fit();
+}
+addEventListener('resize',fit);
+function seg(b){const g=b.closest('.seg'),bs=[...g.querySelectorAll('button')];g.style.setProperty('--i',bs.indexOf(b));bs.forEach(x=>x.classList.toggle('on',x===b))}
+
+function sheet(o){
+ const m=$('#md');
+ m.innerHTML=`<div class="ov"><div class="sheet ${o.c}"><h4>${o.title}</h4><p class="sub">${o.sub}</p><textarea id="nt" placeholder="${o.ph}" maxlength="1000"></textarea><div class="err" id="er"></div><div class="act" style="margin-top:0"><button class="btn p" id="ok">${o.btn}</button><button class="btn" id="no">Cancel</button></div></div></div>`;
+ const ov=m.firstChild,t=$('#nt'),close=()=>{ov.classList.add('x');setTimeout(()=>{if(m.firstChild===ov)m.innerHTML=''},230)};
+ t.focus();
+ $('#no').onclick=close;
+ ov.onclick=e=>{if(e.target===ov)close()};
+ const go=()=>{const v=t.value.trim();if(!v){$('#er').textContent='Add a line first.';t.focus();return}o.ok(v);close();save();render();navigator.vibrate&&navigator.vibrate(15)};
+ $('#ok').onclick=go;
+ t.onkeydown=e=>{if(e.key==='Enter'&&(e.ctrlKey||e.metaKey))go();if(e.key==='Escape')close()};
+}
+const A={
+ resistance:()=>sheet({c:'R',title:'Resistance',sub:'What is it telling you right now?',ph:"Don't feel like it...",btn:'Log it',ok:v=>S.entries.push({id:uid(),type:'resistance',ts:Date.now(),note:v,status:'open'})}),
+ failure:()=>sheet({c:'F',title:'Failure',sub:'What failed?',ph:'Got the problem wrong because...',btn:'Log it',ok:v=>S.entries.push({id:uid(),type:'failure',ts:Date.now(),note:v,status:'open'})}),
+ restart:()=>sheet({c:'S',title:'Restart',sub:'Why are you getting up again?',ph:'Back at it because...',btn:'Log restart',ok:v=>S.entries.push({id:uid(),type:'restart',ts:Date.now(),note:v})})
+};
+addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||$('#md').firstChild)return;const t=e.target.tagName;if(t==='INPUT'||t==='TEXTAREA')return;const k={r:'resistance',f:'failure',s:'restart'}[e.key.toLowerCase()];if(k){e.preventDefault();A[k]()}});
+document.addEventListener('click',ev=>{
+ const b=ev.target.closest('button');if(!b)return;const d=b.dataset;
+ if(d.go){if(d.tab)nt=d.tab;scr=d.go;render(true);scrollTo(0,0)}
+ else if(d.per){per=d.per;seg(b);$('#pl').textContent=PL[per];['resistance','failure','restart'].forEach(t=>$('#s-'+t).textContent=sub(t));setNum()}
+ else if(d.add)A[d.add]();
+ else if(d.nt){nt=d.nt;seg(b);$('#nl').innerHTML=noteList()}
+ else if(d.clr){nq=nf=nto='';render()}
+ else if(d.hbk){S.hideBk=Date.now();save();render()}
+ else if(d.jar){const e=S.entries.find(x=>x.id===d.jar);e.jar=!e.jar;save();render()}
+ else if(d.res){const[i,s]=d.res.split('|'),e=S.entries.find(x=>x.id===i);e.status=s;e.doneTs=Date.now();save();render()}
+ else if(d.close){const[i,k]=d.close.split('|'),e=S.entries.find(x=>x.id===i);
+  sheet({c:'S',title:k==='fixed'?'Fixed':'Moved on',sub:k==='fixed'?'What did you find, and what comes next?':'Why is there nothing to fix?',ph:k==='fixed'?'Found... next I will...':'Nothing to fix because...',btn:'Close failure',
+  ok:v=>{e.status='closed';e.closeType=k;e.closeNote=v;e.closedTs=Date.now();S.entries.push({id:uid(),type:'restart',ts:Date.now(),note:v,fromFailure:e.id})}})}
+ else if(d.edit)edit(d.edit);
+ else if(d.del)askDel(d.del);
+ else if(d.reopen)reopen(d.reopen);
+ else if(d.sn){S.name=$('#sn').value.trim();save();$('#sm').textContent=S.name?'Saved. You will see it next time you open the app.':'Name cleared.'}
+ else if(d.cookie)cookie();
+ else if(d.wipe)wipe();
+ else if(d.x==='exp')exportFile();
+ else if(d.x==='txt')copyTxt(+d.d||0);
+});
+$('#nav').innerHTML='<div class="brand">Pushed Through</div>'+scr0.map(([k,l,p])=>`<button data-go="${k}">${ic(p)}<span>${l}</span></button>`).join('');
+
+function plain(days){
+ return byNew(S.entries).filter(e=>!days||e.ts>=Date.now()-days*864e5).map(e=>{
+  const st=e.type==='resistance'?(e.status==='through'?'went through':e.status==='no'?'did not go through':'open'):e.type==='failure'?(e.status==='open'?'open':'closed ('+e.closeType+')'):(e.fromFailure?'from failure':'-');
+  return `[${T[e.type][1]}] ${new Date(e.ts).toISOString().slice(0,16).replace('T',' ')} | ${st} | ${e.note.replace(/\n/g,' ')}${e.closeNote?' | closing note: '+e.closeNote.replace(/\n/g,' '):''}${e.jar?' | flagged jar':''}`}).join('\n')}
+async function exportFile(){
+ const data=JSON.stringify({app:'pushed-through',v:1,entries:S.entries},null,1),name='pushed-through-'+new Date().toISOString().slice(0,10)+'.json';
+ try{
+  const dl=window.claude&&await claude.use('downloads');
+  if(dl)await dl.save({filename:name,data});
+  else{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type:'application/json'}));a.download=name;a.click()}
+  S.lastBackup=Date.now();save();msg='Exported.';
+ }catch(e){msg='Export cancelled or blocked.'}
+ render();
+}
+function imp(ev){
+ const f=ev.target.files[0];if(!f)return;const r=new FileReader();
+ r.onload=()=>{try{
+  const j=JSON.parse(r.result),ids=new Set(S.entries.map(e=>e.id));let n=0;
+  (j.entries||[]).forEach(e=>{if(e&&e.id&&T[e.type]&&typeof e.note==='string'&&!ids.has(e.id)){S.entries.push(e);n++}});
+  save();msg='Imported '+n+' new entries. Export a fresh backup when you can.';
+ }catch(e){msg='That file could not be read.'}
+ shown=0;render()};
+ r.readAsText(f);
+}
+async function copyTxt(days){
+ const t=plain(days);let ok=false;
+ try{await navigator.clipboard.writeText(t);ok=true}catch(e){}
+ msg=ok?'Copied. Paste it to Claude.':'Copy was blocked. Select the text below and copy it.';
+ render();
+ if(!ok){const c=$('#cp');c.hidden=false;c.value=t;c.style.minHeight='220px';c.select()}
+}
+render();
+function welcome(){const o=$('#wb');if(o)o.remove();const d=document.createElement('div');d.id='wb';d.innerHTML=`<i></i><span>welcome back</span>${S.name?`<b>${esc(S.name)}</b>`:''}`;document.body.appendChild(d);setTimeout(()=>d.remove(),1900)}
+welcome();
+let hid=0;document.addEventListener('visibilitychange',()=>{if(document.hidden)hid=Date.now();else if(hid&&Date.now()-hid>60000)welcome()});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
