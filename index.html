@@ -49,7 +49,7 @@ h3{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
 .num small{position:absolute;left:100%;bottom:calc(var(--fs,100px)*.08);margin-left:6px;font:500 13px "Chakra Petch",system-ui,sans-serif;color:var(--mu);line-height:1;text-shadow:none}
 .pop{animation:pop .55s var(--ease)}
 @keyframes pop{40%{transform:scale(1.06)}}
-.pl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mu);margin-top:8px;text-align:center}
+.pl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mu);margin-top:8px;display:flex;align-items:center;justify-content:center;gap:6px}
 .seg{position:relative;display:grid;grid-template-columns:repeat(var(--n,4),1fr);background:var(--sf);border:1px solid var(--ln);padding:2px;max-width:380px;margin:8px auto 26px}
 .seg i{position:absolute;top:2px;bottom:2px;left:2px;width:calc((100% - 4px)/var(--n,4));background:#1f1f1f;border:1px solid var(--tx);transform:translateX(calc(var(--i,0)*100%));transition:transform .4s var(--ease)}
 .seg button{position:relative;border:0;background:none;padding:8px 2px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
@@ -110,6 +110,24 @@ textarea{width:100%;min-height:96px;border:1px solid var(--ln);border-radius:0;b
 .hold:before{content:"";position:absolute;inset:0;background:var(--rd);opacity:.45;transform:scaleX(var(--p));transform-origin:left}
 .hold span{position:relative}
 .cookie{font-size:15px}
+.nv{border:0;background:none;color:var(--tx);font-size:22px;line-height:1;padding:8px 12px;min-height:40px}
+.nv:disabled{opacity:.25}
+.plb{position:relative;min-width:150px;text-align:center;border-bottom:1px dashed var(--ln);padding:6px 4px}
+#dp{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;color-scheme:dark}
+.ch{width:100%;height:auto;display:block}.ch text{fill:var(--mu);font-size:9px;font-family:inherit}
+.cp{background:var(--sf);border:1px solid var(--ln);padding:14px 16px}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.tile{border:1px solid var(--ln);background:var(--sf);padding:12px 14px}
+.tile b{display:block;font:400 38px/1.1 "Permanent Marker","Segoe Print",cursive;color:var(--c,var(--hero))}
+.tile span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+.hmh{display:flex;align-items:center;justify-content:space-between;font-size:13px}
+.hm{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:10px}
+.hm i{font-style:normal;text-align:center;font-size:10px;color:var(--mu)}
+.hc{aspect-ratio:1;border:1px solid var(--ln);padding:3px;font-size:10px;color:var(--mu);background:color-mix(in srgb,var(--hero) calc(var(--a,0)*100%),transparent)}
+.hc.n{border:0;background:none}
+.sb{display:flex;height:14px;border:1px solid var(--ln);margin:10px 0 8px}.sb i{display:block}
+.lg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mu)}
+.seg.cu i{opacity:0}
 #wb b{font:400 56px "Permanent Marker","Segoe Print",cursive;color:var(--tx);margin-top:-4px;animation:rise .8s var(--ease) .45s both}
 h2:before{content:"[ "}h2:after{content:" ]"}
 .grp,.sheet,.add{--k:var(--tx);background-image:linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k)),linear-gradient(var(--k),var(--k));background-repeat:no-repeat;background-size:10px 2px,2px 10px,10px 2px,2px 10px,10px 2px,2px 10px,10px 2px,2px 10px;background-position:0 0,0 0,100% 0,100% 0,0 100%,0 100%,100% 100%,100% 100%}
@@ -132,15 +150,21 @@ function tick(){const t=pushed().length;if(t>(S.lt||0)&&ms(t))celebrate(t);S.lt=
 const save=()=>{tick();try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
 const ic=p=>`<svg viewBox="0 0 24 24">${p}</svg>`;
 const T={resistance:['R','Resistance'],failure:['F','Failure'],restart:['S','Restart']};
-const scr0=[['home','Home','<path d="M3 11l9-8 9 8M5 10v11h14V10"/>'],['notes','Notes','<path d="M5 3h14v18H5zM9 8h6M9 12h6M9 16h4"/>'],['jar','Jar','<path d="M8 3h8v3H8zM6 6h12v15H6zM6 11h12"/>'],['history','History','<path d="M3 3h18v18H3zM12 7v5l4 2"/>'],['data','Data','<path d="M4 5h16v5H4zM4 14h16v5H4z"/>'],['settings','Settings','<path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4h4v6h-4zM6 14h4v6H6z"/>']];
-let scr='home',per='total',nt='failure',nq='',nf='',nto='',shown=0,msg='';
+const scr0=[['home','Home','<path d="M3 11l9-8 9 8M5 10v11h14V10"/>'],['notes','Notes','<path d="M5 3h14v18H5zM9 8h6M9 12h6M9 16h4"/>'],['jar','Jar','<path d="M8 3h8v3H8zM6 6h12v15H6zM6 11h12"/>'],['history','History','<path d="M3 3h18v18H3zM12 7v5l4 2"/>'],['stats','Stats','<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>'],['settings','Settings','<path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4h4v6h-4zM6 14h4v6H6z"/>']];
+let scr='home',per='total',nt='failure',nq='',nf='',nto='',shown=0,msg='',off=0,sr=30,sf='',st='',hm=0;
 const PL={total:'all time',today:'today',weekly:'this week',monthly:'this month'};
 function from(p){const d=new Date();d.setHours(0,0,0,0);if(p==='today')return+d;if(p==='weekly'){d.setDate(d.getDate()-((d.getDay()+6)%7));return+d}if(p==='monthly'){d.setDate(1);return+d}return 0}
 const fmt=t=>new Date(t).toLocaleString([],{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'});
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const ofT=t=>S.entries.filter(e=>e.type===t);
 const pushed=()=>S.entries.filter(e=>e.type==='restart'||(e.type==='resistance'&&e.status==='through')).map(e=>e.type==='restart'?e.ts:e.doneTs||e.ts);
-const cnt=(a,p)=>a.filter(t=>t>=from(p)).length;
+function fmtD(t){return new Date(t).toLocaleDateString([],{day:'numeric',month:'short'})}
+function rng(p,o=off){const d=new Date();d.setHours(0,0,0,0);
+ if(p==='today'){d.setDate(d.getDate()+o);const a=+d;return[a,a+864e5,o===0?'today':o===-1?'yesterday':d.toLocaleDateString([],{weekday:'short',day:'numeric',month:'short'})]}
+ if(p==='weekly'){d.setDate(d.getDate()-((d.getDay()+6)%7)+o*7);const a=+d,e=new Date(a);e.setDate(e.getDate()+7);return[a,+e,o===0?'this week':o===-1?'last week':fmtD(a)+' - '+fmtD(+e-864e5)]}
+ if(p==='monthly'){d.setDate(1);d.setMonth(d.getMonth()+o);const a=+d,e=new Date(d);e.setMonth(e.getMonth()+1);return[a,+e,o===0?'this month':d.toLocaleDateString([],{month:'long',year:'numeric'})]}
+ return[0,Infinity,'all time']}
+const cnt=(a,p)=>{const r=rng(p);return a.filter(t=>t>=r[0]&&t<r[1]).length};
 const sub=t=>cnt(ofT(t).map(e=>e.ts),per);
 const inJar=e=>e.jar||(e.type==='resistance'&&e.status==='through');
 const byNew=a=>a.slice().sort((x,y)=>y.ts-x.ts);
@@ -190,18 +214,49 @@ function noteList(){
  else h+=sec('',all,e=>card(e,`<div class="act">${jb(e)}</div>`));
  return h+(all.length?'':'<div class="empty">Nothing here.</div>')}
 
+function updHome(){const n=$('#pll');if(!n)return;n.textContent=rng(per)[2];const tot=per==='total';document.querySelectorAll('.nv').forEach(b=>{b.style.visibility=tot?'hidden':'visible';if(b.dataset.nav==='1')b.disabled=off>=0});['resistance','failure','restart'].forEach(t=>{$('#s-'+t).textContent=sub(t)});setNum()}
+function bars(v,c,l0,l1){const n=v.length,m=Math.max(1,...v),w=300/n,bw=Math.min(w*.76,24);return `<svg viewBox="0 0 300 130" class="ch">${v.map((x,i)=>x?`<rect x="${(i*w+(w-bw)/2).toFixed(1)}" y="${(110-x/m*100).toFixed(1)}" width="${bw.toFixed(1)}" height="${(x/m*100).toFixed(1)}" style="fill:${c}"/>`:'').join('')}<path d="M0 110.5H300" style="stroke:var(--ln);fill:none"/><text x="0" y="125">${l0}</text><text x="300" y="125" text-anchor="end">${l1}</text><text x="300" y="9" text-anchor="end">max ${m}</text></svg>`}
+function wkKey(t){const d=new Date(t);d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return+d}
+const dur=ms=>ms<864e5?Math.max(1,Math.round(ms/36e5))+' h':(ms/864e5).toFixed(1)+' days';
+function sRange(){const n=new Date();n.setHours(0,0,0,0);const end=+n+864e5,f=S.entries.length?Math.min(...S.entries.map(e=>e.ts)):end-864e5,fd=new Date(f);fd.setHours(0,0,0,0);let a,b=end;
+ if(sf||st){a=sf?+new Date(sf+'T00:00:00'):+fd;if(st)b=Math.min(end,+new Date(st+'T00:00:00')+864e5)}else a=sr?end-sr*864e5:+fd;
+ a=Math.max(a,+fd);if(b<=a)b=a+864e5;return[a,b]}
+function statsBody(){
+ const[a,b]=sRange(),inR=t=>t>=a&&t<b,days=[];
+ for(let d=new Date(a);+d<b&&days.length<4000;d.setDate(d.getDate()+1))days.push({k:d.toDateString(),t:+d});
+ const P=pushed().filter(inR),R=ofT('resistance').filter(e=>inR(e.ts)),F=ofT('failure').filter(e=>inR(e.ts)),RS=ofT('restart').filter(e=>inR(e.ts));
+ const mp=new Map(days.map((d,i)=>[d.k,i])),dc=days.map(()=>0);P.forEach(t=>{const i=mp.get(new Date(t).toDateString());if(i!==undefined)dc[i]++});
+ let v=dc;if(days.length>92){v=[];for(let i=0;i<dc.length;i+=7)v.push(dc.slice(i,i+7).reduce((x,y)=>x+y,0))}
+ const wk=new Map();days.forEach((d,i)=>{const k=wkKey(d.t);wk.set(k,(wk.get(k)||0)+dc[i])});let bw=[0,0];wk.forEach((c,k)=>{if(c>bw[0])bw=[c,k]});
+ const mx0=Math.max(...dc),bi=dc.indexOf(mx0),act=dc.filter(x=>x).length;
+ const th=R.filter(e=>e.status==='through').length,no=R.filter(e=>e.status==='no').length,ro=R.length-th-no,dec=th+no;
+ const cl=F.filter(e=>e.status==='closed'),fo=F.length-cl.length,avg=cl.length?cl.reduce((s,e)=>s+((e.closedTs||e.ts)-e.ts),0)/cl.length:0;
+ const hrs=Array(24).fill(0);R.forEach(e=>{hrs[new Date(e.ts).getHours()]++});
+ const hd=new Date();hd.setDate(1);hd.setHours(0,0,0,0);hd.setMonth(hd.getMonth()+hm);
+ const dim=new Date(hd.getFullYear(),hd.getMonth()+1,0).getDate(),lead=(hd.getDay()+6)%7,mc=Array(dim).fill(0);
+ pushed().forEach(t=>{const d=new Date(t);if(d.getFullYear()===hd.getFullYear()&&d.getMonth()===hd.getMonth())mc[d.getDate()-1]++});
+ const mm=Math.max(1,...mc);
+ const sbr=p=>p.reduce((s,x)=>s+x[0],0)?`<div class="sb">${p.map(x=>x[0]?`<i style="flex:${x[0]};background:${x[1]}"></i>`:'').join('')}</div><div class="lg">${p.map(x=>`<span><b style="color:${x[1]}">${x[0]}</b> ${x[2]}</span>`).join('')}</div>`:'<p class="empty" style="padding:8px 0 0">Nothing in this range.</p>';
+ return `<p class="cntl" style="margin-left:0">${fmtD(a)} - ${fmtD(b-864e5)} · ${act} active ${act===1?'day':'days'} of ${days.length}</p>
+ <div class="tiles"><div class="tile"><b>${P.length}</b><span>Pushed through</span></div><div class="tile R"><b>${R.length}</b><span>Resistance</span></div><div class="tile F"><b>${F.length}</b><span>Failures</span></div><div class="tile S"><b>${RS.length}</b><span>Restarts</span></div></div>
+ <h3>Pushed through ${days.length>92?'per week':'per day'}</h3><div class="cp">${bars(v,'var(--hero)',fmtD(days[0].t),fmtD(days[days.length-1].t))}<div class="lg" style="margin-top:8px"><span>Best day <b style="color:var(--tx)">${mx0?mx0+' · '+fmtD(days[bi].t):'-'}</b></span><span>Best week <b style="color:var(--tx)">${bw[0]?bw[0]+' · week of '+fmtD(bw[1]):'-'}</b></span></div></div>
+ <h3>Month view</h3><div class="cp"><div class="hmh"><button class="nv" data-hm="-1">‹</button><span>${hd.toLocaleDateString([],{month:'long',year:'numeric'})} · ${mc.filter(x=>x).length} active</span><button class="nv" data-hm="1" ${hm>=0?'disabled':''}>›</button></div><div class="hm">${'MTWTFSS'.split('').map(x=>`<i>${x}</i>`).join('')}${Array(lead).fill('<div class="hc n"></div>').join('')}${mc.map((c,i)=>{const al=c?+(.2+.7*c/mm).toFixed(2):0;return `<div class="hc" style="--a:${al};${al>.5?'color:#fff':''}">${i+1}</div>`}).join('')}</div></div>
+ <h3>Resistance</h3><div class="cp"><div style="font-size:15px"><b>${dec?Math.round(th/dec*100)+'%':'-'}</b> went through</div>${sbr([[th,'var(--gr)','went through'],[no,'var(--mu)','did not'],[ro,'var(--or)','waiting']])}</div>
+ <h3>Failures</h3><div class="cp"><div style="font-size:15px"><b>${F.length}</b> logged${cl.length?` · closes in about <b>${dur(avg)}</b>`:''}</div>${sbr([[cl.length,'var(--gr)','closed'],[fo,'var(--rd)','still open']])}</div>
+ <h3>When resistance hits</h3><div class="cp">${bars(hrs,'var(--or)','12am','11pm')}</div>`}
 const views={
-settings(){return `<h2>Settings</h2><h3>Your name</h3><div class="flt"><input id="sn" type="text" maxlength="30" value="${esc(S.name||'')}" placeholder="What should I call you?" style="width:100%"></div><div class="act"><button class="btn p" data-sn="1">Save name</button></div><p id="sm" style="color:var(--mu);font-size:14px">Shown in the welcome animation every time you open the app.</p>`},
+stats(){const cu=sf||st;return `<h2>Stats</h2><div class="seg${cu?' cu':''}" style="--n:4;--i:${Math.max(0,[7,30,90,0].indexOf(sr))};max-width:none;margin:0 0 12px"><i></i>${[7,30,90,0].map(x=>`<button class="${x===sr&&!cu?'on':''}" data-sr="${x}">${x?x+' days':'All'}</button>`).join('')}</div><div class="flt"><div class="dts" style="margin:0"><label>From<input id="sf" type="date" value="${sf}"></label><label>To<input id="st" type="date" value="${st}"></label><button class="btn" data-sclr="1">Clear</button></div></div><div id="sv">${statsBody()}</div>`},
+settings(){return `<h2>Settings</h2><h3>Your name</h3><div class="flt"><input id="sn" type="text" maxlength="30" value="${esc(S.name||'')}" placeholder="What should I call you?" style="width:100%"></div><div class="act"><button class="btn p" data-sn="1">Save name</button></div><p id="sm" style="color:var(--mu);font-size:14px">Shown in the welcome animation every time you open the app.</p>`+views.data()},
 home(){
  const open=ofT('resistance').filter(e=>e.status==='open').length;
  const wk=S.entries.length&&Date.now()-S.lastBackup>6048e5&&Date.now()-S.hideBk>864e5;
  const P=['total','today','weekly','monthly'];
  return `<section class="home"><div class="t">Pushed Through</div>
- <div class="hero"><div class="num"><span id="n">${dg(shown)}</span><small>times</small></div><div class="pl" id="pl">${PL[per]}</div></div>
+ <div class="hero"><div class="num"><span id="n">${dg(shown)}</span><small>times</small></div><div class="pl" id="pl"><button class="nv" data-nav="-1" aria-label="Previous">‹</button><label class="plb"><span id="pll">${rng(per)[2]}</span><input type="date" id="dp" max="${new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10)}"></label><button class="nv" data-nav="1" aria-label="Next">›</button></div></div>
  <div class="seg" style="--n:4;--i:${P.indexOf(per)}"><i></i>${P.map(p=>`<button class="${p===per?'on':''}" data-per="${p}">${p[0].toUpperCase()+p.slice(1)}</button>`).join('')}</div>
  <div class="subs">${[['resistance','Resistance','R'],['failure','Failures','F'],['restart','Restarts','S']].map(([t,l,c])=>`<div class="${c}"><b id="s-${t}">${sub(t)}</b>${l}</div>`).join('')}</div>
  <div class="adds">${[['resistance','Resistance','R','<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'],['failure','Failure','F','<circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/>'],['restart','Restart','S','<path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/>']].map(([t,l,c,p])=>`<button class="add ${c}" data-add="${t}">${l}</button>`).join('')}</div>
- <p class="hint">${open?`<button data-go="notes" data-tab="resistance">${open} resistance waiting on an outcome</button>`:''}${open&&wk?' · ':''}${wk?`Backup is over a week old. <button data-go="data">Back up</button> · <button data-hbk="1">dismiss</button>`:''}</p></section>`},
+ <p class="hint">${open?`<button data-go="notes" data-tab="resistance">${open} resistance waiting on an outcome</button>`:''}${open&&wk?' · ':''}${wk?`Backup is over a week old. <button data-go="settings">Back up</button> · <button data-hbk="1">dismiss</button>`:''}</p></section>`},
 notes(){
  const N=['failure','restart','resistance'],L=['Failures','Restarts','Resistance'];
  return `<h2>Notes</h2><div class="seg" style="--n:3;--i:${N.indexOf(nt)};max-width:none;margin:0 0 14px"><i></i>${N.map((t,i)=>`<button class="${t===nt?'on':''}" data-nt="${t}">${L[i]}</button>`).join('')}</div>
@@ -214,7 +269,7 @@ history(){
  const l=byNew(S.entries);
  return `<h2>History</h2>${l.length?`<div class="grp">${l.map(e=>card(e,inJar(e)&&!e.jar?'':`<div class="act">${jb(e)}</div>`)).join('')}</div>`:'<div class="empty">Nothing logged yet.</div>'}`},
 data(){
- return `<h2>Data</h2>
+ return `<h3 style="margin:32px 0 8px 2px">Backup and data</h3>
  <p style="color:var(--mu)">Saved in this browser only. Export a file to back up or move to another device.</p>
  <div class="act"><button class="btn p" data-x="exp">Export file</button><label class="btn" tabindex="0">Import file<input id="imp" type="file" accept=".json,application/json" hidden></label><button class="btn" data-x="txt" data-d="7">Copy text: 7 days</button><button class="btn" data-x="txt" data-d="30">30 days</button><button class="btn" data-x="txt" data-d="0">All</button></div>
  <p style="color:var(--mu);font-size:14px">${S.lastBackup?'Last export: '+fmt(S.lastBackup):'No export yet.'}</p>
@@ -225,8 +280,9 @@ function render(anim){
  $('#nav').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.go===scr));
  const v=$('#v');v.innerHTML=views[scr]();
  if(anim){v.classList.remove('in');void v.offsetWidth;v.classList.add('in')}
- if(scr==='home')setNum();
+ if(scr==='home'){updHome();const dp=$('#dp');dp.onclick=()=>{try{dp.showPicker()}catch(e){}};dp.onchange=e=>{const v=e.target.value;if(!v)return;const t0=new Date();t0.setHours(0,0,0,0);per='today';off=Math.min(0,Math.round((new Date(v+'T00:00:00')-t0)/864e5));render()}}
  const f=$('#imp');if(f)f.onchange=imp;
+ if(scr==='stats')['sf','st'].forEach(id=>{$('#'+id).oninput=()=>{sf=$('#sf').value;st=$('#st').value;const g=$('.seg'),cu=!!(sf||st);g.classList.toggle('cu',cu);g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',!cu&&+x.dataset.sr===sr));$('#sv').innerHTML=statsBody()}});
  if(scr==='notes')['nq','nf','nto'].forEach(id=>{$('#'+id).oninput=()=>{nq=$('#nq').value;nf=$('#nf').value;nto=$('#nto').value;$('#nl').innerHTML=noteList()}});
 }
 function fit(){const n=$('#n');if(!n)return;const d=String(n.textContent).length||1,nav=innerWidth>=900?0:64,room=innerHeight-nav-380;
@@ -263,7 +319,8 @@ addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||$('#md').first
 document.addEventListener('click',ev=>{
  const b=ev.target.closest('button');if(!b)return;const d=b.dataset;
  if(d.go){if(d.tab)nt=d.tab;scr=d.go;render(true);scrollTo(0,0)}
- else if(d.per){per=d.per;seg(b);$('#pl').textContent=PL[per];['resistance','failure','restart'].forEach(t=>$('#s-'+t).textContent=sub(t));setNum()}
+ else if(d.per){per=d.per;off=0;seg(b);updHome()}
+ else if(d.nav){off=Math.min(0,off+ +d.nav);updHome()}
  else if(d.add)A[d.add]();
  else if(d.nt){nt=d.nt;seg(b);$('#nl').innerHTML=noteList()}
  else if(d.clr){nq=nf=nto='';render()}
@@ -277,6 +334,9 @@ document.addEventListener('click',ev=>{
  else if(d.del)askDel(d.del);
  else if(d.reopen)reopen(d.reopen);
  else if(d.sn){S.name=$('#sn').value.trim();save();$('#sm').textContent=S.name?'Saved. You will see it next time you open the app.':'Name cleared.'}
+ else if(d.sr!==undefined){sr=+d.sr;sf=st='';$('#sf').value='';$('#st').value='';seg(b);b.closest('.seg').classList.remove('cu');$('#sv').innerHTML=statsBody()}
+ else if(d.sclr){sf=st='';render()}
+ else if(d.hm){hm=Math.min(0,hm+ +d.hm);$('#sv').innerHTML=statsBody()}
  else if(d.cookie)cookie();
  else if(d.wipe)wipe();
  else if(d.x==='exp')exportFile();
@@ -318,6 +378,7 @@ async function copyTxt(days){
 render();
 function welcome(){const o=$('#wb');if(o)o.remove();const d=document.createElement('div');d.id='wb';d.innerHTML=`<i></i><span>welcome back</span>${S.name?`<b>${esc(S.name)}</b>`:''}`;document.body.appendChild(d);setTimeout(()=>d.remove(),1900)}
 welcome();
+{const q=new URLSearchParams(location.search).get('log');if(q&&A[q]){history.replaceState(null,'',location.pathname);setTimeout(()=>A[q](),2000)}}
 let hid=0;document.addEventListener('visibilitychange',()=>{if(document.hidden)hid=Date.now();else if(hid&&Date.now()-hid>60000)welcome()});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
